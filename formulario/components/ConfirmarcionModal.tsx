@@ -10,54 +10,22 @@ interface ConfirmationModalProps {
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ visible, message, onClose }) => {
     return (
         <Modal
-        transparent={true}
-        visible={visible}
-        onRequestClose={onClose}
-        animationType="slide"
+            transparent={true}
+            visible={visible}
+            onRequestClose={onClose}
+            animationType="slide"
         >
-        <View style={styles.modalOverlay}>
-            <View style={styles.modalView}>
-            <Text style={styles.modalMessage}>{message}</Text>
-            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-                <Text style={styles.closeButtonText}>Cerrar</Text>
-            </TouchableOpacity>
+            <View className="flex-1 justify-center items-center bg-black/50">
+                <View className="bg-white p-5 rounded-lg shadow-lg">
+                    <Text className="text-base mb-5">{message}</Text>
+                    <TouchableOpacity  className="bg-blue-500 py-2 px-4 rounded-lg items-center"  onPress={onClose}>
+                        <Text className="text-white text-lg">Cerrar</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
         </Modal>
     );
 };
 
-const styles = StyleSheet.create({
-    modalOverlay: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    },
-    modalView: {
-        backgroundColor: '#fff',
-        padding: 20,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    modalMessage: {
-        fontSize: 16,
-        marginBottom: 20,
-    },
-    closeButton: {
-        backgroundColor: '#007BFF',
-        padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
-    },
-    closeButtonText: {
-        color: '#FFF',
-        fontSize: 16,
-    },
-});
 
 export default ConfirmationModal;
